@@ -140,6 +140,15 @@ nav li a:hover {
   cursor: pointer;
 }
 
+footer {
+  background: black;
+  height: 10vh;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (min-width: 768px) {
   .mobile-menu, .mobile-menu-exit {
     display: none;
