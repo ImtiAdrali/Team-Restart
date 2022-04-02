@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Author: Imtiaz Ahmad -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/710a7ce53f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Oswald:wght@200&family=Permanent+Marker&display=swap" rel="stylesheet">
+</head>
+<body class="Login">
+    <div class="container">
+        <div class="left">
+          <div class="logo">
+            <img src="../images/IMG_0220.PNG" alt="" onclick="home()" width="300px">
+            <script>
+              function home() {
+                window.location.href = "index.html";
+              }
+            </script>
+          </div>
+      </div>
+        <div class="right">
+            <div class="login">
+                <h2>Register</h2>
+            </div>
+          <form class="form">
+            <i class="fa-solid fa-0"></i>
+            <div class="username">
+                <input type="text" name="username" id="username" placeholder="User Name">
+            </div>
+            <div class="emilholder">
+                <input type="email" name="email" id="email" placeholder="Email">
+            </div>
+            <div class="passwordholder">
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="forgetPassword">
+                <a href="login.html" class="register">Login</a>
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="submit">Register</button>
+                <button type="reset" class="reset">Reset</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <script src="/js/index.js"></script>
+</body>
+</html>
