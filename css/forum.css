@@ -38,4 +38,10 @@
     height: 70vh
 }
 
-.d
+.discussionTitle h4 {
+    color: rgb(111, 87, 248);
+}
+
+.dicussionBody p {
+    margin-left: 5%;
+}
