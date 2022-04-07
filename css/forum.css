@@ -2,7 +2,8 @@
 .BoardButton {
   text-align: center; 
   margin-bottom: 15px;
-  margin-left: 40px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1rem;
   font-weight: 600;
   color: rgb(219, 204, 204);
@@ -24,9 +25,8 @@
     background-color: #20272E;
     height: 70vh;
     margin-right: 50px;
-    margin-left: 40px;
+    margin-top: 5%;
     display: flex;
-    width: 15%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
