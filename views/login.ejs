@@ -29,10 +29,16 @@
             <div class="login">
                 <h2>Log In</h2>
             </div>
-          <form class="form">
+            <div class="errors">
+              <% if (typeof alert != "undefined") {%>
+                <% alert.forEach(function(error) {%>
+                    <p><%= error.msg %></p>
+                <%})%>
+              <%}%>
+            </div>
+          <form class="form" action="/login" method="post" >
             <i class="fa-solid fa-0"></i>
             <div class="emilholder">
-                
                 <input type="email" name="email" id="email" placeholder="Email">
             </div>
             <div class="passwordholder">
