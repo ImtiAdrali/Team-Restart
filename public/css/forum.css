@@ -1,4 +1,6 @@
-
+.diss {
+    margin-right: 70px;
+}
 .BoardButton {
   text-align: center; 
   margin-bottom: 15px;
@@ -9,7 +11,7 @@
   color: rgb(219, 204, 204);
   text-align: center;
   width: 200px;
-  height: 60px;
+  /* height: 60px; */
   border-radius: 5px;
   position: relative;
   overflow: hidden;
@@ -35,7 +37,8 @@
 }
 
 .BoardRow {
-    height: 70vh
+    height: 70vh;
+    margin-top: 90px;
 }
 
 .discussionTitle h4 {

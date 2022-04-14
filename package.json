@@ -1,0 +1,27 @@
+{
+  "name": "team-restart",
+  "version": "1.0.0",
+  "description": "To Start the server on port 5000: \r                                 Use the command \"npm start\" or \"npm run start\" to run the application on localhost:5000/",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImtiAdrali/Team-Restart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ImtiAdrali/Team-Restart/issues"
+  },
+  "homepage": "https://github.com/ImtiAdrali/Team-Restart#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3"
+  }
+}
