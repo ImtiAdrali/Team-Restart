@@ -1,50 +1,57 @@
-.diss {
-    margin-right: 70px;
-}
-.BoardButton {
-  text-align: center; 
-  margin-bottom: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgb(219, 204, 204);
-  text-align: center;
-  width: 200px;
-  /* height: 60px; */
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
-  background-image: (linear-gradient(270deg, #8e9ac2, #42579a));
-  background-size: 400% 400%;
-  animation: TransitioningBackground 10s ease infinite;
-  transition: 0.6s;
 
+/* Disscussion fourn form */
+.form-container {
+    max-width: 700px;
+    margin-top: 20px;
 }
 
+.post {
+    margin-right: 15px;
+}
 
-.TagRow {
-    background-color: #20272E;
-    height: 70vh;
-    margin-right: 50px;
-    margin-top: 5%;
+.left-top {
+    height: 60px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
     align-items: center;
-    color: rgb(255, 255, 255);;
-                    
+    justify-content: center;
+}
+.right-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.BoardRow {
-    height: 70vh;
-    margin-top: 90px;
+.left-bottom {
+    height: 90vh;
+    position: relative;
 }
 
-.discussionTitle h4 {
-    color: rgb(111, 87, 248);
+.left-bottom, .left-top
+,.right-top, .right-bottom {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.dicussionBody p {
-    margin-left: 5%;
+.bt1, .bt2, .bt3 {
+    font-size: 13px;
+}
+
+.dis-card {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+}
+.dis-card:hover {
+    background-color: rgb(245, 248, 248);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.active {
+    border: 1px solid white;
+    background-color: #0275d8;
+    color: white;
+    border-radius: 5px;
+}
+.diss-link {
+    font-size: 13px;
 }

@@ -21,9 +21,7 @@ router.get("/news", (req, res) => {
     res.render("news");
 });
 
-router.get("/forum", (req, res) => {
-    res.render("forum");
-});
+
 
 
 

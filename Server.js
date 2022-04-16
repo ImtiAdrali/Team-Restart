@@ -4,9 +4,11 @@ const app = express();
 const homeroute = require("./routes/index")
 const pagesroutes = require("./routes/pages");
 const loginResistration = require("./routes/loginResistration");
+const fourm = require("./routes/fourm");
 const ejs = require("ejs");
 const { body, validationResult, check} = require("express-validator");
 const bodyParser = require("body-parser");
+
 const PORT = process.env.PORT;
 
 app.use(express.static("public"));
@@ -16,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(homeroute);
 app.use(pagesroutes);
 app.use(loginResistration);
+app.use(fourm);
 
 app.post("/login", 
 [
@@ -29,6 +32,10 @@ app.post("/login",
         res.render("login", {alert: error.array()});
     }
 });
+
+app.get("/disscussionForm", (req, res) => {
+    res.render("disscussionForm");
+})
 
 
 
