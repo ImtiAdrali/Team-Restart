@@ -17,9 +17,9 @@ router.get("/contact", (req, res) => {
     res.render("contact");
 });
 
-router.get("/news", (req, res) => {
-    res.render("news");
-});
+// router.get("/news", (req, res) => {
+//     res.render("news");
+// });
 
 
 

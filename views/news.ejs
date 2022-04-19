@@ -167,6 +167,24 @@
         </div>
     </section>
 
+
+    <div>
+        <% articlesArray.forEach(article => { %>
+            <div class="card mt-4 dis-card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= article.Title %>
+                    </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%= article.Date %>
+                    </div>
+                </div>
+                <div class="card-text mb-2" style="margin-left: 20px;">
+                    <%= article.Content %>
+                </div>
+            </div>
+            <% }) %>
+    </div>
     <footer>
         <div class="container">
             <p>Disclaimer: This is a fictitious website developed by Team Restart for IT 390.</p>

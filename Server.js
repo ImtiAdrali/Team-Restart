@@ -1,8 +1,9 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const homeroute = require("./routes/index")
+const homeroute = require("./routes/index");
 const pagesroutes = require("./routes/pages");
+const newsRouter = require("./routes/news");
 const loginResistration = require("./routes/loginResistration");
 const fourm = require("./routes/fourm");
 const ejs = require("ejs");
@@ -19,6 +20,7 @@ app.use(homeroute);
 app.use(pagesroutes);
 app.use(loginResistration);
 app.use(fourm);
+app.use(newsRouter);
 
 app.post("/login",
     [
