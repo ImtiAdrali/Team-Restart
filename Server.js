@@ -6,7 +6,7 @@ const pagesroutes = require("./routes/pages");
 const loginResistration = require("./routes/loginResistration");
 const fourm = require("./routes/fourm");
 const ejs = require("ejs");
-const { body, validationResult, check} = require("express-validator");
+const { body, validationResult, check } = require("express-validator");
 const bodyParser = require("body-parser");
 
 const PORT = process.env.PORT;
@@ -20,18 +20,18 @@ app.use(pagesroutes);
 app.use(loginResistration);
 app.use(fourm);
 
-app.post("/login", 
-[
-    check("email").isEmail().withMessage("Invalid email"),
-    check("password").isLength({min: 8}).withMessage("required: 8 chars"),
-]
-,(req, res) => {
-    const error = validationResult(req);
-    if (!error.isEmpty()) {
-        // return res.status(422).send(error.array());
-        res.render("login", {alert: error.array()});
-    }
-});
+app.post("/login",
+    [
+        check("email").isEmail().withMessage("Invalid email"),
+        check("password").isLength({ min: 8 }).withMessage("required: 8 chars"),
+    ]
+    , (req, res) => {
+        const error = validationResult(req);
+        if (!error.isEmpty()) {
+            // return res.status(422).send(error.array());
+            res.render("login", { alert: error.array() });
+        }
+    });
 
 app.get("/disscussionForm", (req, res) => {
     res.render("disscussionForm");

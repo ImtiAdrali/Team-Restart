@@ -154,16 +154,23 @@ ul.features-list li {
 }
 
 .testimonials-section-home {
-  color: white;
+  color: black;
 }
 
 .testimonials-section-home li {
-  background: #747474;
   text-align: center;
   padding: 2em 1em;
   width: 80%;
   margin: 0 auto 5em auto;
   border-radius: 1em;
+}
+
+.testimonials-section-home li img {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  -o-object-position: 75% 40%;
+     object-position: 75% 40%;
 }
 
 .testimonials-section {
@@ -180,7 +187,8 @@ ul.features-list li {
   margin-bottom: .5em;
 }
 
-.testimonials-section input, .testimonials-section textarea {
+.testimonials-section input,
+.testimonials-section textarea {
   width: 100%;
   padding: .8em;
   margin-bottom: 1em;
@@ -256,7 +264,8 @@ footer p {
 }
 
 @media only screen and (min-width: 768px) {
-  .mobile-menu, .mobile-menu-exit {
+  .mobile-menu,
+  .mobile-menu-exit {
     display: none;
   }
   .navbar .container {
@@ -342,15 +351,23 @@ footer p {
             filter: brightness(80%);
   }
   .testimonials-section-home {
-    color: white;
+    color: black;
   }
   .testimonials-section-home li {
-    background: #747474;
     text-align: center;
     padding: 2em 1em;
     width: 80%;
     margin: 0 auto 5em auto;
     border-radius: 1em;
+  }
+  .testimonials-section-home li img {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    -o-object-position: 75% 40%;
+       object-position: 75% 40%;
   }
   .testimonials-section-home ul {
     display: -webkit-box;
@@ -376,6 +393,9 @@ footer p {
     right: 0;
     width: 40%;
     bottom: -2em;
+  }
+  .mission {
+    text-align: center;
   }
 }
 /*# sourceMappingURL=main.css.map */

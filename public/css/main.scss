@@ -1,10 +1,9 @@
-
 :root {
     --primary-color: #a02424;
 }
 
 body {
-    background: #F2F2F2; 
+    background: #F2F2F2;
     margin: 0;
     font-family: 'Helvetica';
 }
@@ -18,10 +17,12 @@ body {
         font-weight: bold;
         color: black;
         font-size: 1.2em;
+
         img {
             height: 3em;
             padding-left: 0em;
         }
+
         span {
             color: var(--primary-color);
         }
@@ -30,7 +31,7 @@ body {
     nav {
         display: none;
     }
-    
+
     .container {
         display: flex;
         place-content: space-between;
@@ -47,9 +48,9 @@ a {
 }
 
 ul {
-   list-style-type: none; 
-   margin: 0;
-   padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 section {
@@ -60,22 +61,24 @@ section {
     text-align: center;
 
 }
+
 .hero-home {
     text-align: center;
-    color:white;
+    color: white;
 
 }
-.contact-right{
+
+.contact-right {
     width: 100%;
-    
-    iframe{
+
+    iframe {
         width: 100%;
     }
 }
 
-.carousel-item{
+.carousel-item {
 
-    img{
+    img {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -85,6 +88,7 @@ section {
 
     }
 }
+
 .hero-col {
 
     .subhead {
@@ -93,6 +97,7 @@ section {
         color: gray;
         letter-spacing: .3em;
     }
+
     .subhead-home {
         text-transform: uppercase;
         font-weight: bold;
@@ -111,10 +116,12 @@ section {
 section.features-section {
     background: #20272E;
 }
+
 section.features-section-home {
     background: #20272E;
     color: white;
 }
+
 ul.features-list {
     margin: 0;
     padding-left: .1em;
@@ -128,20 +135,23 @@ ul.features-list {
         position: relative;
     }
 }
+
 .features-section-home img {
     display: none;
 }
+
 .banner {
 
     background: url(../images/Bannner1for390-01-01.png);
     background-repeat: no-repeat;
     background-size: cover;
 
-    .banner-content{
+    .banner-content {
         color: black;
         width: 100%;
         font-size: 1.5em;
-        p{
+
+        p {
             display: inline-block;
             margin-top: 0;
             width: 100%;
@@ -151,33 +161,43 @@ ul.features-list {
 
 
 }
+
 .testimonials-section-home {
-    color: white;
+    color: black;
 
     li {
-        background: #747474;
+
         text-align: center;
         padding: 2em 1em;
         width: 80%;
         margin: 0 auto 5em auto;
         border-radius: 1em;
 
+        img {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            object-position: 75% 40%;
+        }
     }
 
 }
 
 .testimonials-section {
+
     /* background: var(--primary-color);*/
-    h2{
+    h2 {
         font-size: 2em;
     }
-    label{
+
+    label {
         display: block;
         font-size: 1.2em;
         margin-bottom: .5em;
     }
 
-    input, textarea {
+    input,
+    textarea {
         width: 100%;
         padding: .8em;
         margin-bottom: 1em;
@@ -186,24 +206,23 @@ ul.features-list {
         box-sizing: border-box;
 
     }
-    input[type="submit"]{
-        background-color:#20272E;
+
+    input[type="submit"] {
+        background-color: #20272E;
         color: white;
-        font-weight:bold ;
+        font-weight: bold;
         font-size: 1.3em;
         border: none;
         margin-top: 3em;
         border-radius: 5em;
         display: inline-block;
-        padding: .8em 2em ;
+        padding: .8em 2em;
         width: unset;
         cursor: pointer;
     }
 }
 
-.contact-section {
-
-}
+.contact-section {}
 
 nav.menu-btn {
     display: block;
@@ -224,7 +243,7 @@ nav {
     }
 
     li {
-        
+
         a {
             color: white;
             text-decoration: none;
@@ -246,13 +265,14 @@ nav {
     cursor: pointer;
 }
 
-footer{
+footer {
     position: fixed;
     bottom: 0;
     text-align: center;
-    background:#20272E ;
+    background: #20272E;
     width: 100%;
-    p{
+
+    p {
         font-size: 1em;
         color: white;
     }
@@ -260,7 +280,8 @@ footer{
 
 @media only screen and (min-width: 768px) {
 
-    .mobile-menu, .mobile-menu-exit {
+    .mobile-menu,
+    .mobile-menu-exit {
         display: none;
     }
 
@@ -292,13 +313,15 @@ footer{
         ul.primary-nav {
             margin: 0;
         }
+
         ul.secondary-nav {
-           margin-right: 1em;
+            margin-right: 1em;
         }
 
         li.current a {
             font-weight: bold;
         }
+
         li.go-premium-cta a {
             color: var(--primary-color);
             border: 3px solid var(--primary-color);
@@ -320,20 +343,23 @@ footer{
 
     .testimonials-section {
 
-        h2{
+        h2 {
             text-align: center;
         }
-        form{
+
+        form {
             margin: 0 auto;
             width: 600px;
         }
-        input[type="submit"]{
+
+        input[type="submit"] {
 
             margin-top: 2em;
         }
 
     }
-    .banner-content{
+
+    .banner-content {
         color: black;
         width: 100%;
         height: 100%;
@@ -342,9 +368,9 @@ footer{
 
     }
 
-    .carousel-item{
+    .carousel-item {
 
-        img{
+        img {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -356,26 +382,33 @@ footer{
     }
 
     .testimonials-section-home {
-        color: white;
-    
+        color: black;
+
         li {
-            background: #747474;
             text-align: center;
             padding: 2em 1em;
             width: 80%;
             margin: 0 auto 5em auto;
             border-radius: 1em;
 
+            img {
+                position: relative;
+                width: 350px;
+                height: 350px;
+                object-fit: cover;
+                object-position: 75% 40%;
+            }
         }
+
         ul {
             display: flex;
-            
+
             li {
                 margin: 0 1em;
             }
         }
     }
-    
+
     ul.features-list {
         display: block;
         margin-left: 5em;
@@ -398,6 +431,8 @@ footer{
         bottom: -2em;
     }
 
+    .mission {
+        text-align: center;
+    }
+
 }
-
-
