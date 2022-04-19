@@ -5,6 +5,8 @@ const cheerio = require("cheerio");
 
 let articles = [];
 
+// https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
+
 axios("	https://data.cdc.gov/browse?q=Ability%20to%20handle%20a%20COVID-19%20outbreak%20(CVAC)&sortBy=relevance")
     .then(response => {
         const html = response.data
@@ -29,5 +31,16 @@ axios("	https://data.cdc.gov/browse?q=Ability%20to%20handle%20a%20COVID-19%20out
 router.get("/news", (req, res) => {
     res.render("news", {articlesArray: articles});
 })
+
+router.get("/news/:link", (req, res) => {
+    const newsArticleLink = req.params.link;
+    
+    articles.forEach(article => {
+        if (article.Title === newsArticleLink) {
+            res.render("new-article", { Title: article.Title, Content: article.Content});
+            
+        }
+    });
+});
 
 module.exports = router;

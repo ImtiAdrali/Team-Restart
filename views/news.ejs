@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <section class="testimonials-section">
+    <!-- <section class="testimonials-section">
         <div class="container">
             <div class="row row-one">
                 <div class="col col-lg-2 col-md-3 col-sm-3 artices-list">
@@ -66,27 +66,27 @@
                         <div class="article article1">
                             <p id="one">
                                 Article 1
-                                <!-- <span>date</span> -->
+                                 
                             </p>
                         </div>
                         <div class="article article2">
                             <p id="two">Article 2
-                                <!-- <span>date</span> -->
+                                
                             </p>
                         </div>
                         <div class="article article3">
                             <p id="three">Article 3
-                                <!-- <span>date</span> -->
+                                
                             </p>
                         </div>
                         <div class="article article4">
                             <p id="four">Article 4
-                                <!-- <span>date</span> -->
+                                
                             </p>
                         </div>
                         <div class="article article5">
                             <p id="five">Article 5
-                                <!-- <span>date</span> -->
+                                
                             </p>
                         </div>
                     </div>
@@ -165,26 +165,31 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-
-    <div>
-        <% articlesArray.forEach(article => { %>
-            <div class="card mt-4 dis-card">
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <%= article.Title %>
-                    </h4>
-                    <div class="card-subtitle text-muted mb-2">
-                        <%= article.Date %>
-                    </div>
-                </div>
-                <div class="card-text mb-2" style="margin-left: 20px;">
-                    <%= article.Content %>
-                </div>
+    <div class="container">
+        <div class="row article-section">
+            <div class="col col-lg-12 col-md-4 col-sm-1"></div>
+                    <% articlesArray.forEach(article => { %>
+                    
+                        <div class="card mt-4 dis-card w-50 articles-card">
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="/news/<%= article.Title %>"> <%= article.Title %> </a>
+                                </h4>
+                                <div class="card-subtitle text-muted mb-2">
+                                    <%= article.Date %>
+                                </div>
+                            </div>
+                            <div class="card-text mb-2" style="margin-left: 20px;">
+                                <%= article.Content.substring(0, 250) + "..." %>
+                            </div>
+                        </div>
+                    <% }) %>
             </div>
-            <% }) %>
+        </div>
     </div>
+
     <footer>
         <div class="container">
             <p>Disclaimer: This is a fictitious website developed by Team Restart for IT 390.</p>
