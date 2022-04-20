@@ -81,8 +81,18 @@
     /* color: #1c6387; */
     color: #800000;
 }
+.card-title img {
+    width: 20px;
+}
 .articles-card {
     border-right: 1px solid #800000;
+}
+.articles-card::before {
+    content: "";
+    width: 100%;
+    height: 12px;
+    background-color: #800000;
+    box-shadow: rgba(245, 245, 248, 0.25) 0px 30px 60px -12px inset, rgba(190, 176, 176, 0.3) 0px 18px 36px -18px inset;
 }
 
 .articles-card:hover {
