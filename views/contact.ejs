@@ -34,8 +34,14 @@
                 </ul>
 
                 <ul class="secondary-nav">
-                    <li><a href="/registration">Join our Community</a></li>
-                    <li class="go-premium-cta"><a href="/login">Login</a></li>
+                    <% if (logedin) {%>
+                        <li class="go-premium-cta"><a href="/logout">logout</a></li>
+                    <%} else {%>
+                        <li><a href="/registration">Join our Community</a></li>
+                        <li class="go-premium-cta"><a href="/login">Login</a></li>
+                    <%}%>
+                    <!-- <li><a href="/registration">Join our Community</a></li>
+                    <li class="go-premium-cta"><a href="/login">Login</a></li> -->
                 </ul>
             </nav>
         </div>

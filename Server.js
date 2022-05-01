@@ -1,11 +1,11 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const homeroute = require("./routes/index");
+// const homeroute = require("./routes/index");
 const pagesroutes = require("./routes/pages");
-const newsRouter = require("./routes/news");
-const loginResistration = require("./routes/loginResistration");
-const fourm = require("./routes/fourm");
+// const newsRouter = require("./routes/news");
+// const loginResistration = require("./routes/loginResistration");
+// const fourm = require("./routes/fourm");
 const ejs = require("ejs");
 const { body, validationResult, check } = require("express-validator");
 const bodyParser = require("body-parser");
@@ -16,11 +16,11 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(homeroute);
+// app.use(homeroute);
 app.use(pagesroutes);
-app.use(loginResistration);
-app.use(fourm);
-app.use(newsRouter);
+// app.use(loginResistration);
+// app.use(fourm);
+// app.use(newsRouter);
 
 app.post("/login",
     [
@@ -35,9 +35,9 @@ app.post("/login",
         }
     });
 
-app.get("/disscussionForm", (req, res) => {
-    res.render("disscussionForm");
-})
+// app.get("/disscussionForm", (req, res) => {
+//     res.render("disscussionForm");
+// })
 
 
 
