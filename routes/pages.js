@@ -2,22 +2,43 @@ const express = require("express");
 const router = express.Router();
 const firbaseApp = require("../public/js/firebase.config")
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } = require("firebase/auth");
+const mongoose = require("mongoose");
+// const { Schema } = mongoose;
+
+
+mongoose.connect("mongodb://localhost:27017/disscussionDb");
+
+
+// Schema
+const fourm = new mongoose.Schema({
+    title: String,
+    date: Date,
+    content: String,
+    userID: String
+});
+
+const disscussionModel = mongoose.model('fourm', fourm);
+
 
 
 // Firbase variables 
 const auth = getAuth();
 let logedin = false;
+let currentUser;
 router.get("/", (req, res) => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
             logedin = true;
+            currentUser = user.uid;
             res.render("index", {logedin});
+
         }else {
             res.render("index", {logedin});
         }
 
     })
 });
+
 
 
 router.get("/login", (req, res) => {
@@ -30,7 +51,7 @@ router.post("/login", (req, res) => {
 
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            console.log(userCredential.displayName);
+            currentUser = userCredential.uid;
             logedin = true;
             res.render("index", {logedin})
         })
@@ -54,6 +75,7 @@ router.post("/registration", (req, res) => {
             // updateProfile(auth.currentUser, {displayName: username})
             if (userCredential.displayName === null)
                 userCredential.displayName = username;
+            currentUser = userCredential.uid;
             res.redirect("/")
         })
         .catch((error) => {
@@ -69,19 +91,14 @@ router.get("/contact", (req, res) => {
     res.render("contact", {logedin});
 });
 
-router.get("/logout", (req, res) => {
-    signOut(auth).then(() => {
-        logedin = false;
-        res.redirect("/")
-    }).catch((error) => {
-        console.log("Unable to logut");
-    })
-})
+
 
 
 router.get("/create", (req, res) => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
+            logedin = true;
+            currentUser = user.uid;
             res.render("disscussionForm");
             // return 
         }else {
@@ -140,24 +157,89 @@ router.get("/news/:link", (req, res) => {
 
 
 // Fourm ruotes start here
-
-let disscussionArray = [];
-
+let current = "hello";
 router.get("/forum", (req, res) => {
-    res.render("forum", {disscussion: disscussionArray, logedin});
+    // console.log(auth.currentUser.email);
+    disscussionModel.find({}, (error, foundDisscussion) => {
+        if (!error) {
+            
+            // console.log(currentUser);
+            // res.render("forum", {disscussion: foundDisscussion, logedin, current});
+            if (logedin == true) {
+                current = auth.currentUser.uid;
+                res.render("forum", {disscussion: foundDisscussion, logedin, current});
+            }
+            res.render("forum", {disscussion: foundDisscussion, logedin, current});
+            
+            // onAuthStateChanged(auth, (user) => {
+            //     if (user) {
+            //         logedin = true;
+            //         currentUser = user.uid;
+            //         // console.log(currentUser);
+            //         res.render("forum", {disscussion: foundDisscussion, logedin, currentUser} )
+            //     }
+            // })
+            
+        }
+    })
+    // console.log(userid);
+    
+    
+    // if (logedin == true) {
+    //     const userid = auth.currentUser.uid;
+    //     disscussionModel.findById(userid, (error, foundid) => {
+    //         if(!error) {
+    //             console.log(foundid);
+    //         }
+    // })
+    // }
+    
 });
 
 router.post("/forum", (req, res) => {
-    const newPost = {
+    const newPost = new disscussionModel({
         title: req.body.title,
-        date: new Date(),
-        discription: req.body.discription
-    }
-    disscussionArray.push(newPost);
-    res.redirect("/forum");
+        date: new Date().toLocaleDateString(),
+        content: req.body.discription,
+        userID: current
+    });
+    // disscussionArray.push(newPost);
+    // console.log(auth.currentUser.uid);
+    newPost.save((error) => {
+        if (!error) {
+            console.log("Post saved");
+            // res.redirect("/forum");
+            // res.render("forum", {disscussion: foundDisscussion, logedin, current} )
+            res.redirect("/forum");
+        }else {
+            console.log("Unable to save the post");
+        }
+    })
+    
 });
 
+router.get("/deletePost", (req, res) => {
+    disscussionModel.findOneAndRemove({userID: current}, (error, founded) => {
+        if (!error) {
+            console.log("Deleted");
+            res.redirect('/forum')
+        }else {
+            console.log("Unable to delete the post");
+        }
+    })
+    
+})
 
+
+router.get("/logout", (req, res) => {
+    signOut(auth).then(() => {
+        logedin = false;
+        current = "";
+        res.redirect("/")
+    }).catch((error) => {
+        console.log("Unable to logut");
+    })
+})
 
 
 module.exports = router;

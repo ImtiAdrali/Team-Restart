@@ -64,7 +64,7 @@
 
     <section class="features-section">
         <div class="container">
-
+            
         </div>
     </section>
 
@@ -78,8 +78,8 @@
                     document.location.href = "/create";
                 }
             </script>
-            <div class="col col-lg-10 col-sm-12 col-md-8 right-top">
-                <button class="btn btn-primary bt2">Drop Down</button>
+            <div class="col col-lg-10 col-sm-12 col-md-8 right-top" style="display: flex; justify-content: end;">
+                <!-- <button class="btn btn-primary bt2">Drop Down</button> -->
                 <button class="btn  bt3"><img src="/images/refresh.png" alt="refresh"></button>
             </div>
         </div>
@@ -101,13 +101,33 @@
                             </h4>
                             <div class="card-subtitle text-muted mb-2">
                                 <%= post.date.toLocaleDateString() %>
+                                
                             </div>
                         </div>
                         <div class="card-text mb-2" style="margin-left: 20px;">
-                            <%= post.discription %>
+                            <%= post.content %>
+                        </div>
+                        <div class="deleteButton" style="margin-bottom: 12px;
+                        padding-right: 12px;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: end;
+                        ">
+                            <% if (current === post.userID) { %>
+                                <button class="btn btn-danger" onclick="deletePost()">Delete</button>  
+                            <%} %>
+                                
+                              
                         </div>
                     </div>
                     <% }) %>
+
+                    <script>
+                        function deletePost() {
+                            window.location.href = "/deletePost";
+                        }
+                        </script>
             </div>
         </div>
     </div>
