@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 // const { Schema } = mongoose;
 
 
-mongoose.connect("mongodb://localhost:27017/disscussionDb");
+mongoose.connect("mongodb+srv://teamrestart:IT390-teamrestart@cluster0.qlcgc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 
 
 // Schema
@@ -17,8 +17,14 @@ const fourm = new mongoose.Schema({
     userID: String
 });
 
-const disscussionModel = mongoose.model('fourm', fourm);
+const articleSchema = new mongoose.Schema({
+    title: String,
+    date: Date,
+    content: String
+});
 
+const disscussionModel = mongoose.model('fourm', fourm);
+const articleModel = mongoose.model("article", articleSchema)
 
 
 // Firbase variables 
@@ -124,17 +130,23 @@ axios("	https://data.cdc.gov/browse?q=Ability%20to%20handle%20a%20COVID-19%20out
         const html = response.data
         const $ = cheerio.load(html);
         
+        let title;
+        let content;
+        let date;
+
+
         $(".browse2-result-content").each(function() {
-            const title = $(this).find("h2 a").text().replace(/\s\s+/g, "");
-            const content = $(this).find(".browse2-result-description").text().replace(/\s\s+/g, "");
-            const date = $(this).find(".browse2-result-timestamp-value").text().replace(/\s\s+/g, "")
+            title = $(this).find("h2 a").text().replace(/\s\s+/g, "");
+            content = $(this).find(".browse2-result-description").text().replace(/\s\s+/g, "");
+            date = $(this).find(".browse2-result-timestamp-value").text().replace(/\s\s+/g, "")
             
             articles.push({
                 Title: title,
                 Date: date,
                 Content: content
             });
-        })
+        });
+        
     })
     .catch(err => {
         console.log(err)
