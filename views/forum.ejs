@@ -80,7 +80,12 @@
             </script>
             <div class="col col-lg-10 col-sm-12 col-md-8 right-top" style="display: flex; justify-content: end;">
                 <!-- <button class="btn btn-primary bt2">Drop Down</button> -->
-                <button class="btn  bt3"><img src="/images/refresh.png" alt="refresh"></button>
+                <button class="btn  bt3" onclick="refresh()"><img src="/images/refresh.png" alt="refresh"></button>
+                <script>
+                    function refresh() {
+                        document.location.reload();
+                    }
+                </script>
             </div>
         </div>
         <div class="row">
@@ -115,7 +120,7 @@
                         justify-content: end;
                         ">
                             <% if (current === post.userID) { %>
-                                <button class="btn btn-danger" onclick="deletePost()">Delete</button>  
+                                <button style="background-color: #800000; color: white;" class="btn " onclick="deletePost()">Delete</button>  
                             <%} %>
                                 
                               

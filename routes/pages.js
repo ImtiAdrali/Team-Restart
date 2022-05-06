@@ -3,7 +3,7 @@ const router = express.Router();
 const firbaseApp = require("../public/js/firebase.config")
 const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } = require("firebase/auth");
 const mongoose = require("mongoose");
-// const { Schema } = mongoose;
+const { check, validationResult} = require("express-validator");// const { Schema } = mongoose;
 
 
 mongoose.connect("mongodb+srv://teamrestart:IT390-teamrestart@cluster0.qlcgc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
@@ -48,14 +48,37 @@ router.get("/", (req, res) => {
 
 
 router.get("/login", (req, res) => {
-    res.render("login");
+    const alerts = [
+        {
+            msg: ""
+        },
+        {
+            msg: ""
+        },
+        {
+            msg: ""
+        }
+    ]
+    res.render("login", {error: alerts});
 });
 
-router.post("/login", (req, res) => {
+router.post("/login",
+[
+    check("email").isEmail().normalizeEmail(),
+    check("password").isLength({
+        min: 8
+    }).withMessage("Password should be atleast 8 character")
+],
+(req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    signInWithEmailAndPassword(auth, email, password)
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        const alerts = errors.array();
+        res.render("login", {error: alerts})
+    }else {
+        signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             currentUser = userCredential.uid;
             logedin = true;
@@ -64,29 +87,63 @@ router.post("/login", (req, res) => {
         .catch((error) => {
             console.log(error);
     });
+    }
+
+
+
+    
 })
 
 router.get("/registration", (req, res) => {
-    res.render("registration");
+    const alerts = [
+        {
+            msg: ""
+        },
+        {
+            msg: ""
+        },
+        {
+            msg: ""
+        }
+    ]
+    res.render("registration", {error: alerts});
 });
 
-router.post("/registration", (req, res) => {
+router.post("/registration", 
+[
+    check("username").not().isEmpty().withMessage("Username sould not be empty"),
+    check("email").isEmail().normalizeEmail(),
+    check("password").isLength({
+        min: 8
+    }).withMessage("Password should be atleast 8 character")
+
+],
+(req, res) => {
     console.log(req.body);
     const username = req.body.username;
     const email = req.body.email;
     const password = req.body.password;
 
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // updateProfile(auth.currentUser, {displayName: username})
-            if (userCredential.displayName === null)
-                userCredential.displayName = username;
-            currentUser = userCredential.uid;
-            res.redirect("/")
-        })
-        .catch((error) => {
-            console.log("An error has occured");
-        });
+    const errors = validationResult(req);
+    
+        if (!errors.isEmpty()) {
+            const alerts = errors.array();
+            console.log(alerts);
+            res.render("registration", {error: alerts})
+        }else {
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                // updateProfile(auth.currentUser, {displayName: username})
+                if (userCredential.displayName === null)
+                    userCredential.displayName = username;
+                currentUser = userCredential.uid;
+                res.redirect("/")
+            })
+            .catch((error) => {
+                console.log("An error has occured");
+            });
+        }
+    
 });
 
 router.get("/about", (req, res) => {
@@ -174,41 +231,21 @@ router.get("/forum", (req, res) => {
     // console.log(auth.currentUser.email);
     disscussionModel.find({}, (error, foundDisscussion) => {
         if (!error) {
-            
-            // console.log(currentUser);
-            // res.render("forum", {disscussion: foundDisscussion, logedin, current});
             if (logedin == true) {
                 current = auth.currentUser.uid;
                 res.render("forum", {disscussion: foundDisscussion, logedin, current});
             }
-            res.render("forum", {disscussion: foundDisscussion, logedin, current});
-            
-            // onAuthStateChanged(auth, (user) => {
-            //     if (user) {
-            //         logedin = true;
-            //         currentUser = user.uid;
-            //         // console.log(currentUser);
-            //         res.render("forum", {disscussion: foundDisscussion, logedin, currentUser} )
-            //     }
-            // })
-            
+            res.render("forum", {disscussion: foundDisscussion, logedin, current});  
         }
     })
-    // console.log(userid);
-    
-    
-    // if (logedin == true) {
-    //     const userid = auth.currentUser.uid;
-    //     disscussionModel.findById(userid, (error, foundid) => {
-    //         if(!error) {
-    //             console.log(foundid);
-    //         }
-    // })
-    // }
     
 });
 
-router.post("/forum", (req, res) => {
+router.post("/forum", 
+[
+    
+],
+(req, res) => {
     const newPost = new disscussionModel({
         title: req.body.title,
         date: new Date().toLocaleDateString(),
