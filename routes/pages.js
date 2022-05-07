@@ -111,7 +111,7 @@ router.get("/registration", (req, res) => {
 router.post("/registration", 
 [
     check("username").not().isEmpty().withMessage("Username sould not be empty"),
-    check("email").isEmail().normalizeEmail(),
+    check("email").isEmail().normalizeEmail().withMessage("Invalid Email Address"),
     check("password").isLength({
         min: 8
     }).withMessage("Password should be atleast 8 character")

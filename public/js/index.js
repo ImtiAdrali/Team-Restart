@@ -10,3 +10,7 @@ inputField.addEventListener("input", (e) => {
     const {value} = e.target;
     countLetters.textContent = value.length;
 })
+
+function visitHome() {
+    window.location.href = "/";
+}

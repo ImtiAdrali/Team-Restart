@@ -33,6 +33,9 @@
         padding: 10px;
         text-align: center;
     }
+    .brand_logo_container:hover {
+        cursor: pointer;
+    }
     .brand_logo {
         height: 150px;
         width: 150px;
