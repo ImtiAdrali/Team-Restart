@@ -2,7 +2,6 @@
 //     console.log(e.target.value);
 // })
 
-const { default: Swal } = require("sweetalert2");
 
 const inputField = document.getElementById("discription");
 let countLetters = document.getElementById("count");
@@ -10,6 +9,7 @@ console.log(countLetters.textContent);
 inputField.addEventListener("input", (e) => {
     
     const {value} = e.target;
+    
     countLetters.textContent = value.length;
 })
 
