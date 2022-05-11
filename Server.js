@@ -10,7 +10,7 @@ const ejs = require("ejs");
 const { body, validationResult, check } = require("express-validator");
 const bodyParser = require("body-parser");
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT_LOCAL;
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -39,8 +39,11 @@ app.post("/login",
 //     res.render("disscussionForm");
 // })
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = PORT
+}
 
-
-app.listen(PORT, () => {
-    console.log(`Server started on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server has started successfully.`);
 })
