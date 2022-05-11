@@ -30,9 +30,9 @@
           
           <form action="/registration" method="post" >
             <div class="input-group mb-3" >
-							<input type="text" name="username" class="form-control input_user" value="" placeholder="username">
+							<input type="text" name="username" class="form-control input_user" value="" placeholder="username" required>
               <div class="err">
-                <%= error[0].msg %>
+                <%= error[0] ? error[0].msg : "" %>
               </div>  
               
             </div>
@@ -41,18 +41,18 @@
 							<div class="input-group-append">
 								
 							</div>
-							<input type="email" name="email" class="form-control input_user" value="" placeholder="email">
+							<input type="email" name="email" class="form-control input_user" value="" placeholder="email" required>
               <div class="err">
-					<%= error[1].msg %>
+					<%= error[1] ? error[0].msg : "" %>
               </div>
             </div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								
 							</div>
-							<input type="password" name="password" class="form-control input_pass" value="" placeholder="password">
+							<input type="password" name="password" class="form-control input_pass" value="" placeholder="password" required>
               <div class="err">
-                <%= error[2].msg %>
+                <%= error[2] ? error[0].msg : "" %>
               </div>
             </div>
 						<div class="form-group">

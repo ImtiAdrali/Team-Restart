@@ -127,11 +127,11 @@ router.post("/registration",
     
         if (!errors.isEmpty()) {
             const alerts = errors.array();
-            console.log(alerts);
             res.render("registration", {error: alerts})
         }else {
             createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
+                    
                 // updateProfile(auth.currentUser, {displayName: username})
                 if (userCredential.displayName === null)
                     userCredential.displayName = username;
@@ -139,7 +139,7 @@ router.post("/registration",
                 res.redirect("/")
             })
             .catch((error) => {
-                console.log("An error has occured");
+                console.log("Email already an use");
             });
         }
     
