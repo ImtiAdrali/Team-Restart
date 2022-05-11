@@ -5,7 +5,6 @@ const { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onA
 const mongoose = require("mongoose");
 const { check, validationResult} = require("express-validator");// const { Schema } = mongoose;
 
-
 mongoose.connect("mongodb+srv://iuser:teamrestart@realmcluster.ccoo0.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 
 // Schema

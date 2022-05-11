@@ -35,9 +35,6 @@ app.post("/login",
         }
     });
 
-// app.get("/disscussionForm", (req, res) => {
-//     res.render("disscussionForm");
-// })
 
 let port = process.env.PORT;
 if (port == null || port == "") {
